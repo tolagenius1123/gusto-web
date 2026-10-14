@@ -3,9 +3,9 @@
 import { ClockIcon, SparklesIcon, UserPlusIcon, UsersRoundIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { FilterChip, FilterChipGroup } from "@/components/shared/filter-chip";
 import { useIdSet } from "@/hooks/use-id-set";
 import { getFullName, pluralize } from "@/lib/format";
-import { cn } from "@/lib/utils";
 import type { Industry, PersonSuggestion } from "@/types/network";
 import { industries, industryConfig } from "@/config/industries";
 import { NetworkSection } from "./network-section";
@@ -13,9 +13,6 @@ import { PersonCard } from "./person-card";
 import { ToggleActionButton } from "@/components/shared/toggle-action-button";
 
 type Filter = Industry | "all";
-
-const chipClassName =
-  "inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium transition-colors outline-none focus-visible:ring-3 focus-visible:ring-ring/50";
 
 export function SuggestionsSection({ suggestions }: { suggestions: PersonSuggestion[] }) {
   const [filter, setFilter] = useState<Filter>("all");
@@ -39,30 +36,20 @@ export function SuggestionsSection({ suggestions }: { suggestions: PersonSuggest
       description="HSE professionals matched on certifications, industry and shared connections"
       icon={SparklesIcon}
     >
-      <div role="group" aria-label="Filter by industry" className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0">
+      <FilterChipGroup label="Filter by industry">
         {filters.map((value) => {
-          const isSelected = filter === value;
           const config = value === "all" ? null : industryConfig[value];
-          const Icon = config?.icon;
           return (
-            <button
+            <FilterChip
               key={value}
-              type="button"
-              aria-pressed={isSelected}
-              onClick={() => setFilter(value)}
-              className={cn(
-                chipClassName,
-                isSelected
-                  ? "border-primary bg-primary text-primary-foreground shadow-[0_0_20px_-6px_var(--primary)]"
-                  : "bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground",
-              )}
-            >
-              {Icon && <Icon aria-hidden="true" className="size-3.5" />}
-              {config?.label ?? "All"}
-            </button>
+              label={config?.label ?? "All"}
+              icon={config?.icon}
+              isSelected={filter === value}
+              onSelect={() => setFilter(value)}
+            />
           );
         })}
-      </div>
+      </FilterChipGroup>
 
       {visible.length === 0 ? (
         <p className="rounded-2xl border border-dashed p-8 text-center text-sm text-muted-foreground">

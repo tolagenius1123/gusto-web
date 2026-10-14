@@ -1,3 +1,4 @@
+import type { Currency } from "@/lib/format";
 import type { Industry } from "./industry";
 
 export type SiteType = "onshore" | "offshore" | "plant" | "construction_site" | "mine";
@@ -17,7 +18,7 @@ export interface Company {
 export interface SalaryRange {
   min: number;
   max: number;
-  currency: "NGN" | "USD";
+  currency: Currency;
   period: "month" | "year";
 }
 

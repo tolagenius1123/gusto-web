@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { ChecklistSection } from "@/components/shared/checklist-section";
+import { DetailPageSkeleton } from "@/components/shared/detail-page-skeleton";
 import { SectionCard } from "@/components/shared/section-card";
 import { CertificationMatchCard } from "@/features/jobs/components/certification-match-card";
 import { CompanyCard } from "@/features/jobs/components/company-card";
-import { JobDetailSkeleton } from "@/features/jobs/components/job-detail-skeleton";
 import { JobHeaderCard } from "@/features/jobs/components/job-header-card";
-import { JobListSection } from "@/features/jobs/components/job-list-section";
 import { SimilarJobsCard } from "@/features/jobs/components/similar-jobs-card";
 import { getCertificationMatch } from "@/lib/certifications";
 import { getJobById, getSimilarJobs } from "@/lib/data/jobs";
@@ -33,7 +33,7 @@ export default function JobDetailPage({ params }: PageProps<"/jobs/[jobId]">) {
         <ArrowLeftIcon aria-hidden="true" className="size-4" />
         Back to jobs
       </Link>
-      <Suspense fallback={<JobDetailSkeleton />}>
+      <Suspense fallback={<DetailPageSkeleton label="Loading job" />}>
         {params.then(({ jobId }) => (
           <JobDetail jobId={jobId} />
         ))}
@@ -62,9 +62,9 @@ async function JobDetail({ jobId }: { jobId: string }) {
         <SectionCard id="about-role" title="About the role" icon={FileTextIcon}>
           <p className="text-sm leading-relaxed">{job.summary}</p>
         </SectionCard>
-        <JobListSection id="responsibilities" title="Responsibilities" icon={ClipboardListIcon} items={job.responsibilities} />
-        <JobListSection id="requirements" title="Requirements" icon={ListChecksIcon} items={job.requirements} />
-        <JobListSection id="benefits" title="Benefits" icon={GiftIcon} items={job.benefits} />
+        <ChecklistSection id="responsibilities" title="Responsibilities" icon={ClipboardListIcon} items={job.responsibilities} />
+        <ChecklistSection id="requirements" title="Requirements" icon={ListChecksIcon} items={job.requirements} />
+        <ChecklistSection id="benefits" title="Benefits" icon={GiftIcon} items={job.benefits} />
       </div>
       <aside aria-label="Company and similar jobs" className="space-y-4 lg:sticky lg:top-24">
         <CompanyCard company={job.company} />

@@ -6,6 +6,7 @@ import {
   TreesIcon,
   type LucideIcon,
 } from "lucide-react";
+import { formatCurrency } from "@/lib/format";
 import type { ExperienceLevel, SalaryRange, SiteType, WorkplaceType } from "@/types/job";
 
 export const siteTypeConfig: Record<SiteType, { label: string; icon: LucideIcon }> = {
@@ -33,12 +34,7 @@ export const experienceLabels: Record<ExperienceLevel, string> = {
 
 export const experienceLevels = Object.keys(experienceLabels) as ExperienceLevel[];
 
-const currencyFormatters = {
-  NGN: new Intl.NumberFormat("en-NG", { style: "currency", currency: "NGN", notation: "compact", maximumFractionDigits: 1 }),
-  USD: new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", notation: "compact", maximumFractionDigits: 1 }),
-};
-
 export function formatSalary(salary: SalaryRange) {
-  const formatter = currencyFormatters[salary.currency];
-  return `${formatter.format(salary.min)} to ${formatter.format(salary.max)} / ${salary.period === "month" ? "mo" : "yr"}`;
+  const range = `${formatCurrency(salary.min, salary.currency)} to ${formatCurrency(salary.max, salary.currency)}`;
+  return `${range} / ${salary.period === "month" ? "mo" : "yr"}`;
 }

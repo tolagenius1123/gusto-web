@@ -3,13 +3,13 @@
 import { BriefcaseBusinessIcon, MapPinIcon, SearchIcon, SlidersHorizontalIcon } from "lucide-react";
 import { useMemo, useState } from "react";
 import { HazardTape } from "@/components/layout/hazard-tape";
+import { SegmentedControl } from "@/components/shared/segmented-control";
 import { WidgetTitle } from "@/components/shared/widget-title";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { getCertificationMatch } from "@/lib/certifications";
-import { cn } from "@/lib/utils";
 import type { Job } from "@/types/job";
 import {
   countActiveFilters,
@@ -156,22 +156,7 @@ export function JobsBrowser({ jobs, heldCertifications }: JobsBrowserProps) {
                   </SheetFooter>
                 </SheetContent>
               </Sheet>
-              <div role="group" aria-label="Sort jobs" className="flex rounded-full border bg-card p-0.5">
-                {sortOptions.map((option) => (
-                  <button
-                    key={option.value}
-                    type="button"
-                    aria-pressed={sort === option.value}
-                    onClick={() => setSort(option.value)}
-                    className={cn(
-                      "rounded-full px-3 py-1 text-xs font-medium transition-colors outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
-                      sort === option.value ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground",
-                    )}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
+              <SegmentedControl label="Sort jobs" options={sortOptions} value={sort} onChange={setSort} />
             </div>
           </div>
 

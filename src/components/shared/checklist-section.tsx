@@ -1,14 +1,14 @@
 import { CheckIcon, type LucideIcon } from "lucide-react";
 import { SectionCard } from "@/components/shared/section-card";
 
-interface JobListSectionProps {
+interface ChecklistSectionProps {
   id: string;
   title: string;
   icon: LucideIcon;
   items: string[];
 }
 
-export function JobListSection({ id, title, icon, items }: JobListSectionProps) {
+export function ChecklistSection({ id, title, icon, items }: ChecklistSectionProps) {
   if (items.length === 0) return null;
 
   return (

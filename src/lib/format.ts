@@ -91,3 +91,14 @@ export function formatDuration(totalMonths: number) {
   ].filter(Boolean);
   return parts.join(" ") || "Less than a month";
 }
+
+export type Currency = "NGN" | "USD";
+
+const currencyFormatters: Record<Currency, Intl.NumberFormat> = {
+  NGN: new Intl.NumberFormat("en-NG", { style: "currency", currency: "NGN", notation: "compact", maximumFractionDigits: 1 }),
+  USD: new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", notation: "compact", maximumFractionDigits: 1 }),
+};
+
+export function formatCurrency(amount: number, currency: Currency) {
+  return currencyFormatters[currency].format(amount);
+}

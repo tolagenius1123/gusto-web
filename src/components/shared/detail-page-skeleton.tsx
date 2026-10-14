@@ -1,9 +1,9 @@
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export function JobDetailSkeleton() {
+export function DetailPageSkeleton({ label }: { label: string }) {
   return (
-    <div role="status" aria-label="Loading job" className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1fr)_19rem]">
+    <div role="status" aria-label={label} className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1fr)_19rem]">
       <div className="space-y-4">
         <Card className="gap-4 rounded-2xl px-6">
           <div className="flex gap-4">
