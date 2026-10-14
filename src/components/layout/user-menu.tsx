@@ -69,7 +69,7 @@ export function UserMenu({ user, className }: UserMenuProps) {
           <ThemeToggleItem />
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem render={<Link href="/sign-in" />}>
           <LogOutIcon aria-hidden="true" />
           Sign out
         </DropdownMenuItem>
