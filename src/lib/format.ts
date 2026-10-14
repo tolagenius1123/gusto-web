@@ -71,3 +71,23 @@ export function formatRelativeShort(date: string, now: number) {
   const match = RELATIVE_UNITS.find(({ seconds }) => elapsedSeconds >= seconds);
   return match ? `${Math.floor(elapsedSeconds / match.seconds)}${match.unit}` : "now";
 }
+
+export function getMonthsBetween(start: string, end: string | number) {
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+  return (
+    (endDate.getUTCFullYear() - startDate.getUTCFullYear()) * 12 +
+    (endDate.getUTCMonth() - startDate.getUTCMonth()) +
+    1
+  );
+}
+
+export function formatDuration(totalMonths: number) {
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+  const parts = [
+    years > 0 && `${years} ${years === 1 ? "yr" : "yrs"}`,
+    months > 0 && `${months} ${months === 1 ? "mo" : "mos"}`,
+  ].filter(Boolean);
+  return parts.join(" ") || "Less than a month";
+}

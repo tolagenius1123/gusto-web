@@ -20,7 +20,7 @@ const STAGGER_MS = 70;
 
 export default function FeedPage() {
   return (
-    <div className="grid items-start gap-6 md:grid-cols-[15rem_minmax(0,1fr)] lg:grid-cols-[15rem_minmax(0,1fr)_19rem]">
+    <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-[15rem_minmax(0,1fr)] lg:grid-cols-[15rem_minmax(0,1fr)_19rem]">
       <aside aria-label="Your profile" className="sticky top-24 hidden animate-rise md:block">
         <ProfileSummaryCard
           user={currentUser}

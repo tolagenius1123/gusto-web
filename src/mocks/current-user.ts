@@ -20,9 +20,42 @@ export const currentUserProfile = {
 };
 
 export const currentUserCertifications: Certification[] = [
-  { id: "c_001", name: "NEBOSH IGC", issuer: "NEBOSH", expiresAt: null },
-  { id: "c_002", name: "ISO 45001 Lead Auditor", issuer: "IRCA", expiresAt: "2027-03-31" },
-  { id: "c_003", name: "First Aid at Work", issuer: "St John Ambulance", expiresAt: "2026-11-20" },
+  {
+    id: "c_001",
+    name: "NEBOSH International General Certificate",
+    issuer: "NEBOSH",
+    issuedAt: "2017-06-15",
+    expiresAt: null,
+    credentialId: "00412-IGC-2017",
+    isVerified: true,
+  },
+  {
+    id: "c_002",
+    name: "ISO 45001 Lead Auditor",
+    issuer: "IRCA",
+    issuedAt: "2022-03-31",
+    expiresAt: "2027-03-31",
+    credentialId: "IRCA-45001-88213",
+    isVerified: true,
+  },
+  {
+    id: "c_003",
+    name: "First Aid at Work",
+    issuer: "St John Ambulance",
+    issuedAt: "2023-11-20",
+    expiresAt: "2026-11-20",
+    credentialId: null,
+    isVerified: false,
+  },
+  {
+    id: "c_004",
+    name: "IOSH Managing Safely",
+    issuer: "IOSH",
+    issuedAt: "2016-02-10",
+    expiresAt: null,
+    credentialId: "IOSH-MS-55120",
+    isVerified: true,
+  },
 ];
 
 export const unreadCounts: Partial<Record<NavItemId, number>> = {

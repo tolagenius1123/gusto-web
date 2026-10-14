@@ -14,9 +14,10 @@ interface PagePlaceholderProps {
   icon: LucideIcon;
   title: string;
   description: string;
+  isWorkInProgress?: boolean;
 }
 
-export function PagePlaceholder({ icon: Icon, title, description }: PagePlaceholderProps) {
+export function PagePlaceholder({ icon: Icon, title, description, isWorkInProgress = true }: PagePlaceholderProps) {
   return (
     <Card className="animate-rise gap-0 rounded-2xl py-0">
       <HazardTape animated className="h-2" />
@@ -30,12 +31,14 @@ export function PagePlaceholder({ icon: Icon, title, description }: PagePlacehol
           </EmptyTitle>
           <EmptyDescription>{description}</EmptyDescription>
         </EmptyHeader>
-        <EmptyContent>
-          <p className="inline-flex items-center gap-2 rounded-full border border-hivis/40 bg-hivis/10 px-3 py-1 text-xs font-medium text-caution">
+        {isWorkInProgress && (
+          <EmptyContent>
+            <p className="inline-flex items-center gap-2 rounded-full border border-hivis/40 bg-hivis/10 px-3 py-1 text-xs font-medium text-caution">
             <ConstructionIcon aria-hidden="true" className="size-3.5" />
-            Work in progress. Hard hats on.
-          </p>
-        </EmptyContent>
+              Work in progress. Hard hats on.
+            </p>
+          </EmptyContent>
+        )}
       </Empty>
     </Card>
   );

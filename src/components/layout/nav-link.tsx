@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Suspense } from "react";
 import { getNavItem, isNavItemActive, type NavItemId } from "@/config/navigation";
 import { formatBadgeCount } from "@/lib/format";
 import { cn } from "@/lib/utils";
@@ -21,10 +22,14 @@ interface NavLinkProps {
   className?: string;
 }
 
-export function NavLink({ itemId, count, labelVisibility = "always", className }: NavLinkProps) {
-  const pathname = usePathname();
+function NavLinkView({
+  itemId,
+  count,
+  labelVisibility = "always",
+  className,
+  isActive,
+}: NavLinkProps & { isActive: boolean }) {
   const item = getNavItem(itemId);
-  const isActive = isNavItemActive(pathname, item.href);
   const Icon = item.icon;
 
   return (
@@ -64,5 +69,19 @@ export function NavLink({ itemId, count, labelVisibility = "always", className }
         {count ? <span className="sr-only">, {count} unread</span> : null}
       </span>
     </Link>
+  );
+}
+
+function ActiveAwareNavLink(props: NavLinkProps) {
+  const pathname = usePathname();
+  const isActive = isNavItemActive(pathname, getNavItem(props.itemId).href);
+  return <NavLinkView {...props} isActive={isActive} />;
+}
+
+export function NavLink(props: NavLinkProps) {
+  return (
+    <Suspense fallback={<NavLinkView {...props} isActive={false} />}>
+      <ActiveAwareNavLink {...props} />
+    </Suspense>
   );
 }
