@@ -1,7 +1,7 @@
 import type { Profile } from "@/types/profile";
 import type { UserSummary } from "@/types/user";
 import { currentUser, currentUserCertifications } from "./current-user";
-import { mockUsers } from "./users";
+import { mockUsers, networkUsers } from "./users";
 
 const adaeze: Profile = {
   ...currentUser,
@@ -122,6 +122,7 @@ export const mockProfiles: Profile[] = [
   createBasicProfile(mockUsers.david, { location: "Abuja, Nigeria", openTo: "hiring" }),
   createBasicProfile(mockUsers.grace, { location: "Lagos, Nigeria" }),
   createBasicProfile(mockUsers.tunde, { location: "Warri, Nigeria", openTo: "opportunities" }),
+  ...Object.values(networkUsers).map((user) => createBasicProfile(user)),
 ];
 
 export const recommendedTraining = [

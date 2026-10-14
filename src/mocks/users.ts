@@ -42,3 +42,27 @@ export const mockUsers = {
     avatarUrl: null,
   },
 } satisfies Record<string, UserSummary>;
+
+function createUser(id: string, firstName: string, lastName: string, headline: string): UserSummary {
+  return {
+    id,
+    username: `${firstName}-${lastName}`.toLowerCase(),
+    firstName,
+    lastName,
+    headline,
+    avatarUrl: null,
+  };
+}
+
+export const networkUsers = {
+  ngozi: createUser("u_007", "Ngozi", "Umeh", "QHSE Lead at Coastline Marine Services"),
+  ibrahim: createUser("u_008", "Ibrahim", "Musa", "Construction Safety Manager | NEBOSH IGC"),
+  kwame: createUser("u_009", "Kwame", "Asante", "Mine Safety Superintendent, Tarkwa"),
+  amara: createUser("u_010", "Amara", "Nwosu", "Environmental Compliance Officer | ISO 14001"),
+  samuel: createUser("u_011", "Samuel", "Ojo", "HSE Coordinator at Apex Manufacturing"),
+  halima: createUser("u_012", "Halima", "Yusuf", "Occupational Health Nurse | First Aid Trainer"),
+  emeka: createUser("u_013", "Emeka", "Obi", "Process Safety Engineer | HAZOP Facilitator"),
+  zainab: createUser("u_014", "Zainab", "Lawal", "Graduate HSE Trainee | NEBOSH IGC candidate"),
+  peter: createUser("u_015", "Peter", "Adjei", "Group HSE Director, 25 years in oil and gas"),
+  folake: createUser("u_016", "Folake", "Ade", "Principal Environmental Consultant"),
+} satisfies Record<string, UserSummary>;
