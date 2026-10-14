@@ -9,6 +9,18 @@ export function useIdSet(initialIds: string[] = []) {
     setIds((current) => new Set(current).add(id));
   }, []);
 
+  const addMany = useCallback((idsToAdd: string[]) => {
+    setIds((current) => new Set([...current, ...idsToAdd]));
+  }, []);
+
+  const remove = useCallback((id: string) => {
+    setIds((current) => {
+      const next = new Set(current);
+      next.delete(id);
+      return next;
+    });
+  }, []);
+
   const toggle = useCallback((id: string) => {
     setIds((current) => {
       const next = new Set(current);
@@ -21,5 +33,5 @@ export function useIdSet(initialIds: string[] = []) {
     });
   }, []);
 
-  return { has: (id: string) => ids.has(id), add, toggle };
+  return { has: (id: string) => ids.has(id), add, addMany, remove, toggle };
 }

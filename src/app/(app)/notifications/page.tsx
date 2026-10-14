@@ -1,15 +1,10 @@
-import { BellIcon } from "lucide-react";
 import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/shared/page-placeholder";
+import { NotificationsCenter } from "@/features/notifications/components/notifications-center";
+import { getNotifications } from "@/lib/data/notifications";
 
 export const metadata: Metadata = { title: "Notifications" };
 
-export default function Page() {
-  return (
-    <PagePlaceholder
-      icon={BellIcon}
-      title="Notifications"
-      description="Stay up to date with activity on your network."
-    />
-  );
+export default async function NotificationsPage() {
+  const notifications = await getNotifications();
+  return <NotificationsCenter notifications={notifications} />;
 }
