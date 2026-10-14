@@ -1,5 +1,5 @@
 import { ConstructionIcon, FactoryIcon, FuelIcon, LeafIcon, PickaxeIcon, type LucideIcon } from "lucide-react";
-import type { Industry } from "@/types/network";
+import type { Industry } from "@/types/industry";
 
 interface IndustryConfig {
   label: string;

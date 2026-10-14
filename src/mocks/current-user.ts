@@ -23,6 +23,7 @@ export const currentUserCertifications: Certification[] = [
   {
     id: "c_001",
     name: "NEBOSH International General Certificate",
+    shortName: "NEBOSH IGC",
     issuer: "NEBOSH",
     issuedAt: "2017-06-15",
     expiresAt: null,
@@ -32,6 +33,7 @@ export const currentUserCertifications: Certification[] = [
   {
     id: "c_002",
     name: "ISO 45001 Lead Auditor",
+    shortName: "ISO 45001 Lead Auditor",
     issuer: "IRCA",
     issuedAt: "2022-03-31",
     expiresAt: "2027-03-31",
@@ -41,6 +43,7 @@ export const currentUserCertifications: Certification[] = [
   {
     id: "c_003",
     name: "First Aid at Work",
+    shortName: "First Aid at Work",
     issuer: "St John Ambulance",
     issuedAt: "2023-11-20",
     expiresAt: "2026-11-20",
@@ -50,6 +53,7 @@ export const currentUserCertifications: Certification[] = [
   {
     id: "c_004",
     name: "IOSH Managing Safely",
+    shortName: "IOSH Managing Safely",
     issuer: "IOSH",
     issuedAt: "2016-02-10",
     expiresAt: null,

@@ -7,7 +7,7 @@ import { getFullName } from "@/lib/format";
 import type { Mentor } from "@/types/network";
 import { NetworkSection } from "./network-section";
 import { PersonCard } from "./person-card";
-import { ToggleActionButton } from "./toggle-action-button";
+import { ToggleActionButton } from "@/components/shared/toggle-action-button";
 
 export function MentorsSection({ mentors }: { mentors: Mentor[] }) {
   const requested = useIdSet();

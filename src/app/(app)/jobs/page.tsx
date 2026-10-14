@@ -1,15 +1,13 @@
-import { BriefcaseBusinessIcon } from "lucide-react";
 import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/shared/page-placeholder";
+import { JobsBrowser } from "@/features/jobs/components/jobs-browser";
+import { getJobs } from "@/lib/data/jobs";
+import { currentUserCertifications } from "@/mocks/current-user";
 
 export const metadata: Metadata = { title: "Jobs" };
 
-export default function Page() {
-  return (
-    <PagePlaceholder
-      icon={BriefcaseBusinessIcon}
-      title="Jobs"
-      description="Find HSE roles that match your skills and certifications."
-    />
-  );
+export default async function JobsPage() {
+  const jobs = await getJobs();
+  const heldCertifications = currentUserCertifications.map((certification) => certification.shortName);
+
+  return <JobsBrowser jobs={jobs} heldCertifications={heldCertifications} />;
 }

@@ -7,9 +7,9 @@ import { useIdSet } from "@/hooks/use-id-set";
 import { formatCompactNumber } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import type { Community } from "@/types/network";
-import { industryConfig } from "../industries";
+import { industryConfig } from "@/config/industries";
 import { NetworkSection } from "./network-section";
-import { ToggleActionButton } from "./toggle-action-button";
+import { ToggleActionButton } from "@/components/shared/toggle-action-button";
 
 export function CommunitiesSection({ communities }: { communities: Community[] }) {
   const joined = useIdSet();

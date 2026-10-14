@@ -1,6 +1,7 @@
+import type { Industry } from "./industry";
 import type { UserSummary } from "./user";
 
-export type Industry = "oil_gas" | "construction" | "manufacturing" | "environmental" | "mining";
+export type { Industry };
 
 export interface Invitation {
   id: string;

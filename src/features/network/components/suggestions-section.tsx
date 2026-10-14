@@ -7,10 +7,10 @@ import { useIdSet } from "@/hooks/use-id-set";
 import { getFullName, pluralize } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import type { Industry, PersonSuggestion } from "@/types/network";
-import { industries, industryConfig } from "../industries";
+import { industries, industryConfig } from "@/config/industries";
 import { NetworkSection } from "./network-section";
 import { PersonCard } from "./person-card";
-import { ToggleActionButton } from "./toggle-action-button";
+import { ToggleActionButton } from "@/components/shared/toggle-action-button";
 
 type Filter = Industry | "all";
 

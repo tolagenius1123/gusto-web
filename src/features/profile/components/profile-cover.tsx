@@ -14,7 +14,6 @@ export function ProfileCover() {
   return (
     <div aria-hidden="true" className="relative h-32 overflow-hidden sm:h-44">
       <div className="absolute inset-0 bg-linear-135 from-primary/40 via-card to-success/25" />
-      <div className="blueprint-grid absolute inset-0 opacity-70" />
       {coverIcons.map(({ icon: Icon, className }) => (
         <Icon key={className} strokeWidth={1.5} className={`absolute ${className}`} />
       ))}

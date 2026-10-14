@@ -13,7 +13,6 @@ interface PulseStat {
 export function SafetyPulseCard({ stats }: { stats: PulseStat[] }) {
   return (
     <Card size="sm" className="relative overflow-hidden rounded-2xl">
-      <div aria-hidden="true" className="blueprint-grid absolute inset-0 opacity-60" />
       <CardHeader className="relative">
         <WidgetTitle icon={ActivityIcon} iconClassName="text-success">
           Safety Pulse

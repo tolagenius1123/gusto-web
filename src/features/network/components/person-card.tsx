@@ -8,7 +8,7 @@ import { getFullName } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import type { Industry } from "@/types/network";
 import type { UserSummary } from "@/types/user";
-import { industryConfig } from "../industries";
+import { industryConfig } from "@/config/industries";
 
 interface PersonCardProps {
   user: UserSummary;
