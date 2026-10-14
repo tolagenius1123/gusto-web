@@ -1,15 +1,16 @@
-import { MessageSquareTextIcon } from "lucide-react";
 import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/shared/page-placeholder";
+import { EmptyThread } from "@/features/messaging/components/empty-thread";
+import { MessagingShell } from "@/features/messaging/components/messaging-shell";
+import { getConversations } from "@/lib/data/messaging";
 
 export const metadata: Metadata = { title: "Messaging" };
 
-export default function Page() {
+export default async function MessagingPage() {
+  const conversations = await getConversations();
+
   return (
-    <PagePlaceholder
-      icon={MessageSquareTextIcon}
-      title="Messaging"
-      description="Your conversations will appear here."
-    />
+    <MessagingShell conversations={conversations} activeId={null}>
+      <EmptyThread />
+    </MessagingShell>
   );
 }

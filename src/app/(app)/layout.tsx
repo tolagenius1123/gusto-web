@@ -1,5 +1,4 @@
 import { AppHeader } from "@/components/layout/app-header";
-import { FloatingSafetyIcons } from "@/components/layout/floating-safety-icons";
 import { MobileTabBar } from "@/components/layout/mobile-tab-bar";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
@@ -11,7 +10,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       >
         Skip to main content
       </a>
-      <FloatingSafetyIcons />
       <AppHeader />
       <main
         id="main-content"

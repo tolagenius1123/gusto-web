@@ -41,16 +41,3 @@ export const HiVisVestIcon = createSafetyIcon("HiVisVestIcon", [
   "M5 17.5h5",
   "M14 17.5h5",
 ]);
-
-export const EarDefendersIcon = createSafetyIcon("EarDefendersIcon", [
-  "M5.5 12V9a6.5 6.5 0 0 1 13 0v3",
-  "M3 14a2 2 0 0 1 2-2h1.5v8H5a2 2 0 0 1-2-2z",
-  "M21 14a2 2 0 0 0-2-2h-1.5v8H19a2 2 0 0 0 2-2z",
-]);
-
-export const SafetyGogglesIcon = createSafetyIcon("SafetyGogglesIcon", [
-  "M3 10a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-3l-1.5-2h-3L9 16H6a3 3 0 0 1-3-3z",
-  "M1 11h2",
-  "M21 11h2",
-  "M7 10h2",
-]);
